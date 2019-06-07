@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: distributed-demo
+
+server:
+  port: 8080
+  servlet:
+    context-path: /distributed
+
+zookeeper:
+  connectStr: 106.12.85.172:2181
+  retryWaitMillis: 1000
+  maxTryCount: 3
+  sessionTimeout: 60000
+  connectionTimeout: 15000
+  basePath: /lock/${spring.profiles.active}
