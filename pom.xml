@@ -25,7 +25,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <zookeeper.version>3.4.9</zookeeper.version>
+    <zookeeper.version>3.4.14</zookeeper.version>
     <curator-recipes.version>4.2.0</curator-recipes.version>
     <curator-framework.version>4.2.0</curator-framework.version>
     <guava.version>19.0</guava.version>
