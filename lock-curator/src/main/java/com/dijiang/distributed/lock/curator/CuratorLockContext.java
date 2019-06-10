@@ -2,9 +2,12 @@ package com.dijiang.distributed.lock.curator;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
+import java.net.InetAddress;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.recipes.leader.LeaderLatch;
+import org.apache.curator.framework.recipes.leader.LeaderLatchListener;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -84,7 +87,27 @@ public class CuratorLockContext implements CLockContext {
       }
 
       try {
-        leaderLock = new CuratorLeaderLock(this.client, lockPath).buildLock();
+        final String hostName = InetAddress.getLocalHost().getHostName();
+        LeaderLatch leaderLatch = new LeaderLatch(this.client, lockPath, hostName,
+            LeaderLatch.CloseMode.NOTIFY_LEADER);
+        leaderLatch.addListener(new LeaderLatchListener() {
+          @Override
+          public void isLeader() {
+            if (log.isDebugEnabled()) {
+              log.debug("{} becomes leader, lockPath is {}", hostName, lockPath);
+            }
+          }
+
+          @Override
+          public void notLeader() {
+            if (log.isDebugEnabled()) {
+              log.debug("{} loses of leader, lockPath is {}", hostName, lockPath);
+            }
+          }
+        });
+        leaderLatch.start();
+
+        leaderLock = new CuratorLeaderLock(leaderLatch, lockPath);
         leaderLockPool.put(lockPath, leaderLock);
         if (log.isDebugEnabled()) {
           log.debug("create leader lock, key is {}", key);
