@@ -8,7 +8,7 @@ server:
     context-path: /distributed
 
 zookeeper:
-  connectStr: 106.12.85.172:2181
+  connectStr: 127.0.0.1:2181
   retryWaitMillis: 1000
   maxTryCount: 3
   sessionTimeout: 60000
