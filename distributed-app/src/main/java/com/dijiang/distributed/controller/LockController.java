@@ -50,5 +50,8 @@ public class LockController {
 
   }
 
-
+  @RequestMapping("/leader")
+  public void leader() throws InterruptedException {
+    lockService.leader();
+  }
 }

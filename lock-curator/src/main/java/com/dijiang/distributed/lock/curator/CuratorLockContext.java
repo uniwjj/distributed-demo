@@ -93,15 +93,15 @@ public class CuratorLockContext implements CLockContext {
         leaderLatch.addListener(new LeaderLatchListener() {
           @Override
           public void isLeader() {
-            if (log.isDebugEnabled()) {
-              log.debug("{} becomes leader, lockPath is {}", hostName, lockPath);
+            if (log.isInfoEnabled()) {
+              log.info("{} becomes leader, lockPath is {}", hostName, lockPath);
             }
           }
 
           @Override
           public void notLeader() {
-            if (log.isDebugEnabled()) {
-              log.debug("{} loses of leader, lockPath is {}", hostName, lockPath);
+            if (log.isInfoEnabled()) {
+              log.info("{} loses of leader, lockPath is {}", hostName, lockPath);
             }
           }
         });

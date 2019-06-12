@@ -1,6 +1,7 @@
 package com.dijiang.distributed.service;
 
 import com.dijiang.distributed.lock.curator.LockAction;
+import com.dijiang.distributed.lock.curator.LockType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,15 @@ public class LockService {
       Thread.sleep(2000);
     } catch (InterruptedException ignored) {}
     log.info("leave simpleParam method, lock name is {}", param);
+  }
+
+  @LockAction(value = "'expression'", lockType = LockType.LEADER_LOCK)
+  public void leader() {
+    log.info("enter simpleName method, lock name is expression");
+    try {
+      Thread.sleep(2000);
+    } catch (InterruptedException ignored) {}
+    log.info("leave simpleName method, lock name is expression");
   }
 
 }
