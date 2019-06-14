@@ -6,11 +6,8 @@ import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 /**
  * Curator配置
@@ -20,10 +17,7 @@ import org.springframework.stereotype.Component;
  */
 @Setter
 @Getter
-@Component
-@Configuration
 @ConfigurationProperties(prefix = "zookeeper")
-@ConditionalOnProperty(value = "zookeeper.connectStr")
 public class CuratorConfig {
 
   /**

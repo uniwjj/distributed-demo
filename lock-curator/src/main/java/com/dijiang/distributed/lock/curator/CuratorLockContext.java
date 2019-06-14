@@ -9,9 +9,6 @@ import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.leader.LeaderLatch;
 import org.apache.curator.framework.recipes.leader.LeaderLatchListener;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.stereotype.Component;
 
 /**
  * Curator锁上下文
@@ -20,15 +17,16 @@ import org.springframework.stereotype.Component;
  * @create 2019-06-07 14:28
  */
 @Slf4j
-@Component
-@ConditionalOnBean(CuratorConfig.class)
 public class CuratorLockContext implements CLockContext {
 
-  @Autowired
   private CuratorConfig curatorConfig;
 
-  @Autowired
   private CuratorFramework client;
+
+  public CuratorLockContext(CuratorConfig curatorConfig, CuratorFramework client) {
+    this.curatorConfig = curatorConfig;
+    this.client = client;
+  }
 
   /**
    * 锁池
