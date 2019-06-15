@@ -20,6 +20,7 @@
   <modules>
     <module>lock-curator</module>
     <module>distributed-app</module>
+    <module>id-generator</module>
   </modules>
 
   <properties>
@@ -42,6 +43,11 @@
       <dependency>
         <groupId>com.dijiang</groupId>
         <artifactId>lock-curator</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.dijiang</groupId>
+        <artifactId>id-generator</artifactId>
         <version>${project.version}</version>
       </dependency>
 

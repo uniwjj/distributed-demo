@@ -7,6 +7,8 @@ server:
   servlet:
     context-path: /distributed
 
+---
+# 分布式锁配置
 zookeeper:
   connectStr: 127.0.0.1:2181
   retryWaitMillis: 1000
@@ -14,3 +16,8 @@ zookeeper:
   sessionTimeout: 60000
   connectionTimeout: 15000
   basePath: /lock/${spring.profiles.active}
+
+---
+# 分布式发号器
+snowflake.instanceId: 0
+
