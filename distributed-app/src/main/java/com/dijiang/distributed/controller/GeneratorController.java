@@ -24,4 +24,9 @@ public class GeneratorController {
     return generatorService.nextId();
   }
 
+  @GetMapping("/nextStr")
+  private String nextStr() {
+    return generatorService.nextStr();
+  }
+
 }

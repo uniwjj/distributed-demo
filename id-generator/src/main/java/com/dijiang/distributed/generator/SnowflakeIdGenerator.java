@@ -131,4 +131,26 @@ public class SnowflakeIdGenerator implements IdGenerator {
     return nextSequence.getId();
   }
 
+  @Override
+  public String nextStr() {
+    long id = nextId();
+    char[] chars = new char[13];
+    for (int i = 0; i < 13; i++) {
+      char c = getChar((int) id & 0x1f);
+      chars[12 - i] = c;
+      id = id >> 5;
+    }
+    StringBuilder sb = new StringBuilder();
+    for (char c : chars) {
+      sb.append(c);
+    }
+    return sb.toString();
+  }
+
+  private char getChar(int num) {
+    if (num <= 9) {
+      return (char) (num + '0');
+    }
+    return (char) (num - 10 + 'A');
+  }
 }

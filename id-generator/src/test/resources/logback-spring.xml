@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 second" debug="false">
+  <!-- 控制台日志 -->
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] [%level] %class{0}.%method:%line - %m%n
+      </Pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+
+  <!-- 过滤掉一些无用的DEBUG信息 -->
+  <logger name="org.springframework" level="INFO"/>
+  <!-- 普通日志 -->
+  <root level="INFO">
+    <appender-ref ref="CONSOLE"/>
+  </root>
+</configuration>

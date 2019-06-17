@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: distributed-demo
+
+server:
+  port: 8080
+  servlet:
+    context-path: /distributed
+
+---
+# 分布式发号器
+snowflake.instanceId: 0
+

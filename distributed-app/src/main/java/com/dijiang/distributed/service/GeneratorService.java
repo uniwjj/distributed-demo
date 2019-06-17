@@ -22,4 +22,8 @@ public class GeneratorService {
     return idGenerator.nextId();
   }
 
+  public String nextStr() {
+    return idGenerator.nextStr();
+  }
+
 }

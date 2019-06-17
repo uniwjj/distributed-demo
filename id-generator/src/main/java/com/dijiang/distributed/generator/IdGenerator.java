@@ -15,4 +15,11 @@ public interface IdGenerator {
    */
   Long nextId();
 
+  /**
+   * 下一个字符串
+   *
+   * @return 下一个字符串
+   */
+  String nextStr();
+
 }
