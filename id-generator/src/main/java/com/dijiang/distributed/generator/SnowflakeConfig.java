@@ -41,7 +41,7 @@ public class SnowflakeConfig {
   private Long timestampEpoch = 0L;
 
   /**
-   * 示例id
+   * 实例id（必须指定值，范围0~1023）
    */
   private Integer instanceId;
 
