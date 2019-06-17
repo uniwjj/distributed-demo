@@ -38,7 +38,7 @@ public class SnowflakeAutoConfiguration {
     Preconditions.checkArgument(config.getInstanceBits() > 0, "instance bits should more than 0");
     Preconditions.checkArgument(config.getTimestampBits() > 0, "timestamp bits should more than 0");
     Preconditions.checkArgument(config.getSignBits() > 0, "sign bits should be than 0");
-    Preconditions.checkArgument(config.getInstanceId() >= 0, "instance id should not less than 0");
+    Preconditions.checkArgument(config.getInstanceId() >= 0 && config.getInstanceId() < Math.pow(2, config.getInstanceBits()), "instance id should not less than 0 and less than 2^instanceBits");
     Preconditions.checkArgument(config.getTimestampEpoch() >= 0, "timestamp epoch bits should not less than 0");
     int bits = config.getSequenceBits() + config.getInstanceBits() + config.getTimestampBits() + config.getSignBits();
     Preconditions.checkArgument(bits == 64, "all bits should be 64");
