@@ -116,6 +116,7 @@ public class SnowflakeIdGenerator implements IdGenerator {
       if (currentSequence == null || currentSequence.getTimestamp() < currentTimestamp) {
         nextSequence = new Sequence(0, currentTimestamp);
       } else if (currentSequence.getTimestamp() == currentTimestamp) {
+        // 本毫秒id发完等待下一毫秒
         int nextValue = (currentSequence.getValue()) + 1 & SEQUENCE_MASK;
         if (nextValue == 0) {
           currentTimestamp = waitForNextTimestamp();
