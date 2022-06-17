@@ -31,7 +31,7 @@
     <curator-framework.version>4.2.0</curator-framework.version>
     <guava.version>19.0</guava.version>
     <joda-time.version>2.10</joda-time.version>
-    <fastjson.version>1.2.47</fastjson.version>
+    <fastjson.version>1.2.83</fastjson.version>
     <lombok.version>1.16.16</lombok.version>
     <commons-io.version>2.6</commons-io.version>
     <commons-beanutils.version>1.9.3</commons-beanutils.version>
